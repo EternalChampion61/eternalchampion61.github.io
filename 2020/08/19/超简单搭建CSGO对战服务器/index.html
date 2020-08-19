@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>超简单搭建CS:GO对战服务器 | Scholar Jr&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="游戏服务器" />
+  
+  
+    <meta name="google-site-verification" content="tuKABG9f7gFGFPCo346REmHx0zqNoLgB9esLl0MkU_I" />
+  
+  
+    <meta name="baidu-site-verification" content="7fZl9pi69c" />
+  
+  
+    <meta name="360-site-verification" content="713d8751e966ff54f61355f83dc620fe" />
+  
+  <meta name="description" content="前一段时间看了地皮的博客中一篇有关搭建CS:GO对战服务器的文章，对这个篇博文有一定的好感。我也是一个600小时的玩家，见到官方服务器太多的素质大哥和二级屠夫，决定依照这篇文章搭建一个对战服务器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超简单搭建CS:GO对战服务器">
+<meta property="og:url" content="https://hugesea.online/2020/08/19/%E8%B6%85%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BACSGO%E5%AF%B9%E6%88%98%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
+<meta property="og:site_name" content="Scholar Jr&#39;s Blog">
+<meta property="og:description" content="前一段时间看了地皮的博客中一篇有关搭建CS:GO对战服务器的文章，对这个篇博文有一定的好感。我也是一个600小时的玩家，见到官方服务器太多的素质大哥和二级屠夫，决定依照这篇文章搭建一个对战服务器。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/19/d16PGq.png">
+<meta property="article:published_time" content="2020-08-19T03:53:45.000Z">
+<meta property="article:modified_time" content="2020-08-19T12:17:51.416Z">
+<meta property="article:author" content="Scholar Jr">
+<meta property="article:tag" content="游戏服务器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/08/19/d16PGq.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Scholar Jr&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Scholar Jr&#39;s Blog" rel="home"> Scholar Jr&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">一起走进代码的世界吧！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/friends">friends</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-超简单搭建CSGO对战服务器" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" target="_blank" href="https://s1.ax1x.com/2020/08/19/d16PGq.png" rel="gallery_cke1ch9ho0009q5i80j7rhel4 noopener">
+        <img src="https://s1.ax1x.com/2020/08/19/d16PGq.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      超简单搭建CS:GO对战服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/08/19/%E8%B6%85%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BACSGO%E5%AF%B9%E6%88%98%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+	  <time datetime="2020-08-19T03:53:45.000Z" itemprop="datePublished">August 19, 2020</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+ 
+      <!--
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+-->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前一段时间看了<a target="_blank" rel="noopener" href="https://dpii.club/archives/160">地皮的博客</a>中一篇有关搭建CS:GO对战服务器的文章，对这个篇博文有一定的好感。我也是一个600小时的玩家，见到官方服务器太多的素质大哥和二级屠夫，决定依照这篇文章搭建一个对战服务器。</p>
+<a id="more"></a>
+
+<h2 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h2><p>CS:GO服务端的运行要求非常低，您只需要准备一个<u>单核、2G内存</u>的服务器即可。不过要注意的是，您最好在购买时选用4M的带宽，4M带宽足够10人同时在服务器进行游戏。</p>
+<p>我的服务器是在阿里云年终活动购买的，配置与上述相同，足够10个人同时游戏，并且在此基础上运行了mp2+Nginx的网站服务。并且阿里云有一个带宽临时升级的选项，您可以使用该选项购买4小时以上的带宽提升服务，其价格也比较实惠。</p>
+<p><strong>广告：<a target="_blank" rel="noopener" href="https://www.rainyun.com/?ref=5306">购买地皮推荐的雨云服务器</a></strong></p>
+<h2 id="安装服务端运行依赖"><a href="#安装服务端运行依赖" class="headerlink" title="安装服务端运行依赖"></a>安装服务端运行依赖</h2><p>通过Ssh并以root身份连接到服务器后使用<code>yum update</code>更新CentOS软件包，如果您是Debian用户，您可以使用<code>apt update</code>进行软件包的更新。此外，CentOS还需要另外使用<code>yum install epel-release</code>安装软件分支。在这一步骤执行完成之后，就可以安装软件包了。</p>
+<p><strong>CentOS</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mailx postfix curl wget tar bzip2 gzip unzip python3 binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 nmap_ncat</span><br></pre></td></tr></table></figure>
+
+<p><strong>Debian</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install mailx postfix curl wget tar bzip2 gzip unzip python3 binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 nmap_ncat</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建专用用户"><a href="#新建专用用户" class="headerlink" title="新建专用用户"></a>新建专用用户</h2><p>为了确保服务器的安全和方便服务器的使用，我们需要建立一个新的用户来运行LinuxGSM。</p>
+<ol>
+<li>添加用户 <em>useradd <username></em></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd csgoserver</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改密码 <em>passwd <username></em></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd csgoserver</span><br></pre></td></tr></table></figure>
+
+<p>当提示用户身份令牌已经成功更新之后，我们就可以展开安装的操作。</p>
+<h2 id="安装服务端"><a href="#安装服务端" class="headerlink" title="安装服务端"></a>安装服务端</h2><ol>
+<li>切换到之前创建完成的专用用户 <em>su - <username></em></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - csgoserver</span><br></pre></td></tr></table></figure>
+
+<p>在提示输入密码时，只需要输入先前设置的密码，在输入时不会有任何已经输入成功的提示。当密码输入完成之后单击Enter即可切换到csgoserver用户。</p>
+<ol start="2">
+<li>拉取服务端安装脚本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O linuxgsm.sh https://gitee.com/scholarcoder/LinuxGSM/raw/master/linuxgsm.sh &amp;&amp; chmod +x linuxgsm.sh &amp;&amp; bash linuxgsm.sh csgoserver</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>运行安装脚本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./csgoserver install</span><br></pre></td></tr></table></figure>
+
+<p>如果程序或服务器没有出现意外，您看到的画面将会如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">[csgoserver@localhost ~]$ .&#x2F;csgoserver install</span><br><span class="line">    fetching core_functions.sh...OK</span><br><span class="line">    fetching core_legacy.sh...OK</span><br><span class="line">    fetching core_messages.sh...OK</span><br><span class="line">    fetching core_dl.sh...OK</span><br><span class="line">    fetching core_trap.sh...OK</span><br><span class="line">    fetching _default.cfg...OK</span><br><span class="line">    copying _default.cfg...OK</span><br><span class="line">    fetching common.cfg...OK</span><br><span class="line">    fetching csgoserver.cfg...OK</span><br><span class="line">    fetching linuxgsm.sh...OK</span><br><span class="line">    fetching core_getopt.sh...OK</span><br><span class="line">    fetching command_install.sh...OK</span><br><span class="line">    fetching check.sh...OK</span><br><span class="line">    fetching check_tmuxception.sh...OK</span><br><span class="line">    fetching check_permissions.sh...OK</span><br><span class="line">    fetching check_glibc.sh...OK</span><br><span class="line">    fetching info_distro.sh...OK</span><br><span class="line">    fetching check_system_requirements.sh...OK</span><br><span class="line">    fetching install_header.sh...OK</span><br><span class="line"></span><br><span class="line">                                mdMMMMbm</span><br><span class="line">                              mMMMMMMMMMMm</span><br><span class="line">                              mMMMMMMMMMMMMm</span><br><span class="line">                             mMMMMMMMMMMMMMMm</span><br><span class="line">                             hMMMV^VMMV^VMMMh</span><br><span class="line">                             MMMMM  MM  MMMMM</span><br><span class="line">                             hMMs   vv   sMMh</span><br><span class="line">                            hMMM:        :MMMh</span><br><span class="line">                          .hMMMh          hMMMh.</span><br><span class="line">                         -dMMMh     __     hMMMd-</span><br><span class="line">                        :mMMMs      ||      sMMMm:</span><br><span class="line">                       :MMMM+       || _     +NMMN:</span><br><span class="line">                      .mMMM+     &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;     +MMMm.</span><br><span class="line">                      yMMMy   ##############   yMMMy</span><br><span class="line">                      mMMM:   ##############   :MMMm</span><br><span class="line">                      mMM   nn   nn    nn   nn   MMm</span><br><span class="line">                      o   nNNNNNNNn    nNNNNNNNn   o</span><br><span class="line">                         nNNNNNNNNNn  nNNNNNNNNNn</span><br><span class="line">                        nNNNNNNNNNNN  NNNNNNNNNNNn</span><br><span class="line">                         +NNNNNNNNN:  :NNNNNNNNN+</span><br><span class="line">                           nNNNNNNN &#x2F;\ NNNNNNNn</span><br><span class="line">                             nnnnn  db  nnnnn</span><br><span class="line"></span><br><span class="line">888      d8b                             .d8888b.   .d8888b.  888b     d888</span><br><span class="line">888      Y8P                            d88P  Y88b d88P  Y88b 8888b   d8888</span><br><span class="line">888                                     888    888 Y88b.      88888b.d88888</span><br><span class="line">888      888 88888b.  888  888 888  888 888          Y888b.   888Y88888P888</span><br><span class="line">888      888 888  88b 888  888  Y8bd8P  888  88888      Y88b. 888 Y888P 888</span><br><span class="line">888      888 888  888 888  888   X88K   888    888        888 888  Y8P  888</span><br><span class="line">888      888 888  888 Y88b 88Y .d8pq8b. Y88b  d88P Y88b  d88P 888   *   888</span><br><span class="line">LinuxGSM 888 888  888  Y8888Y  888  888   Y2012P88   Y8888P   888       888</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">LinuxGSM_</span><br><span class="line">by Daniel Gibbs</span><br><span class="line">Game: Counter-Strike: Global Offensive</span><br><span class="line">Website: https:&#x2F;&#x2F;linuxgsm.com</span><br><span class="line">Contributors: https:&#x2F;&#x2F;linuxgsm.com&#x2F;contrib</span><br><span class="line">Donate: https:&#x2F;&#x2F;linuxgsm.com&#x2F;donate</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">    fetching install_server_dir.sh...OK</span><br><span class="line"></span><br><span class="line">Server Directory</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">&#x2F;home&#x2F;csgoserver</span><br><span class="line"></span><br><span class="line">Continue? [Y&#x2F;n] Y</span><br></pre></td></tr></table></figure>
+
+<p>如果安装成功，会提示您是否继续，这里直接Enter即可。接下来脚本将会检测您的服务器系统中是否存在服务端所需要的依赖项，并且自动为您下载SteamCMD和CS:GO服务端，下载的时间依服务器带宽而定。如果您在这一步中遇到错误，可以向我发送邮件，我会为您解决相关错误。</p>
+<ol start="4">
+<li>获取Game Server Login Token（GSTL）</li>
+</ol>
+<p>在安装完成后会提示您输入Gstl口令，您只需要访问<a target="_blank" rel="noopener" href="https://steamcommunity.com/dev/managegameservers">Gstl获取页面</a>登录您的Steam并创建即可。当然，您的账户需要满足一些条件。</p>
+<ul>
+<li>您的 Steam 帐户目前不能处于社区封禁或锁定状态</li>
+<li>您的 Steam 帐户不能受限</li>
+<li>您的 Steam 帐户必须拥有一个合格的注册手机</li>
+<li>您的 Steam 帐户必须拥有所创建游戏服务器对应的游戏</li>
+<li>您的 Steam 帐户可以创建 1000 个游戏服务器帐户</li>
+</ul>
+<p>在服务端下载成功会会提示如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Success! App &#39;740&#39; fully installed.</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">Was the install successful? [Y&#x2F;n] Y</span><br></pre></td></tr></table></figure>
+
+<p>如果提示Success即可直接按下Enter，开始输入Gstl。输入您的Gstl后单击Enter，如果没有问题服务端程序就会提示如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LinuxGSM Stats</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">Assist LinuxGSM development by sending anonymous stats to developers.</span><br><span class="line">More info: https:&#x2F;&#x2F;docs.linuxgsm.com&#x2F;configuration&#x2F;linuxgsm-stats</span><br><span class="line">The following info will be sent:</span><br><span class="line">* game server</span><br><span class="line">* distro</span><br><span class="line">* game server resource usage</span><br><span class="line">* server hardware info</span><br><span class="line">Allow anonymous usage statistics? [Y&#x2F;n] Y</span><br></pre></td></tr></table></figure>
+
+<p>此步直接Enter即可，到此服务端安装结束，服务器能够开始运行。</p>
+<h2 id="测试服务器以及配置参数"><a href="#测试服务器以及配置参数" class="headerlink" title="测试服务器以及配置参数"></a>测试服务器以及配置参数</h2><p>首先启动CS:GO服务端，测试服务端是否正常运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;csgoserver start</span><br></pre></td></tr></table></figure>
+
+<p>如果提示中不带有FAIL，并且在运行开始后Gstl页面提示上次登录的时间对应，即为服务端运行正常。即可关闭服务端并且配置有关文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./csgoserver stop</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>切换到配置文件目录</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/lgsm/config-lgsm/csgoserver/</span><br></pre></td></tr></table></figure>
+
+<p>其文件目录结构图如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">csgoserver&#x2F;</span><br><span class="line">|_common.cfg</span><br><span class="line">|_csgoserver.cfg</span><br><span class="line">|__default.cfg</span><br></pre></td></tr></table></figure>
+
+<p>其中的common.cfg我们暂时用不到，csgoserver.cfg是服务端程序运行时读取的配置文档，_default.cfg是默认配置文档。</p>
+<ol>
+<li>将_default.cfg中的配置写入到csgoserver.cfg</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat _default.cfg &gt; csgoserver.cfg</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使_default.cfg不生效</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv _default.cfg _default.cfg.bak</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>编辑csgoserver.cfg文件，再次填写Gstl</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim csgoserver.cfg</span><br></pre></td></tr></table></figure>
+
+<p>在第36行的地方填入Gslt。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Game Server Login Token (GSLT): Required</span><br><span class="line"># GSLT is required for running a public server.</span><br><span class="line"># More info: https:&#x2F;&#x2F;docs.linuxgsm.com&#x2F;steamcmd&#x2F;gslt</span><br><span class="line">gslt&#x3D;&quot;BB******************************&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在保存之后切换到主目录并使用<code>./csgoserver start</code>命令开启CS:GO服务端，并且关闭防火墙或开启27015端口。如果您使用的是阿里云的服务器，您还要去配置安全组。请参考阿里云官方文档并开启27015端口。</p>
+<h2 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h2><p>在结束了繁杂的安装过程之后就可以打开CS:GO进入服务器玩耍了，您只需要在游戏中按**~**键进入控制台，输入<code>connect &lt;ip&gt;</code>进入服务器。如果CS:GO不能自动检测到游戏服务器的端口，那么请在命令中指定端口<code>connect &lt;ip&gt;:&lt;port&gt;</code>。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">游戏服务器</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/07/vim%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8vim-startify%E6%8F%92%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vim安装和使用vim-startify插件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">购买服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%BF%90%E8%A1%8C%E4%BE%9D%E8%B5%96"><span class="nav-number">2.</span> <span class="nav-text">安装服务端运行依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%93%E7%94%A8%E7%94%A8%E6%88%B7"><span class="nav-number">3.</span> <span class="nav-text">新建专用用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">4.</span> <span class="nav-text">安装服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">测试服务器以及配置参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">连接服务器</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Scholar Jr&#39;s Blog All Rights Reserved.
+        <!--
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          -->
+      </div>
+      <div class="site-credit">
+         <a href="http://www.beian.miit.gov.cn/" target="_blank">鄂ICP备20003140号</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-159542734-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+	<!---<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</scrpt>-->
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <!-- 网站灰度 -->
+    <script>
+    var DateStatement = new Date();
+    var Month = DateStatement.getMonth() + 1;
+    var Day = DateStatement.getDate();
+
+    console.log("Today: " + Month + "/" + Day);
+    if (Month == 4 && Day == 4) {
+        document.body.innerHTML +=
+      "<style>html,body{filter: grayscale(75%); -webkit-filter: grayscale(75%); -moz-filter: grayscale(75%); -ms-filter: grayscale(75%); -o-filter: grayscale(75%);filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=0.75);}</style>";
+    }
+    </script>
+</body>
+</html>
