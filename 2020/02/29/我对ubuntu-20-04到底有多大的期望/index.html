@@ -9,7 +9,13 @@
   <meta name="keywords" content="GNU/LinuxUbuntu" />
   
   
+    <meta name="google-site-verification" content="tuKABG9f7gFGFPCo346REmHx0zqNoLgB9esLl0MkU_I" />
   
+  
+    <meta name="baidu-site-verification" content="7fZl9pi69c" />
+  
+  
+    <meta name="360-site-verification" content="713d8751e966ff54f61355f83dc620fe" />
   
   <meta name="description" content="Ubuntu 20.04 LTS 前言约莫18小时前， Joey Sneddon 在 Omg!Ubuntu! 社区中发文 Ubuntu 20.04 发行日期和计划的功能。据官方的可信数据， Ubuntu 20.04 LTS 将会在2020年4月23日发布。 并且，Ubuntu 20.04将会成为一个相对其他发行版来说的一个重要发行版。">
 <meta property="og:type" content="article">
@@ -122,7 +128,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" target="_blank" href="https://s2.ax1x.com/2020/02/29/3yJQ0I.jpg" rel="gallery_cke0xfsnl0001hbi8fi987xo5 noopener">
+      <a class="article-gallery-img fancybox" target="_blank" href="https://s2.ax1x.com/2020/02/29/3yJQ0I.jpg" rel="gallery_cke0y5no60007k2i8h6940upr noopener">
         <img src="https://s2.ax1x.com/2020/02/29/3yJQ0I.jpg" itemprop="image">
       </a>
     
@@ -334,6 +340,19 @@
 
 
 
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-159542734-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
 
 
 
@@ -352,5 +371,17 @@
 
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js" async=""></script>
+  <!-- 网站灰度 -->
+    <script>
+    var DateStatement = new Date();
+    var Month = DateStatement.getMonth() + 1;
+    var Day = DateStatement.getDate();
+
+    console.log("Today: " + Month + "/" + Day);
+    if (Month == 4 && Day == 4) {
+        document.body.innerHTML +=
+      "<style>html,body{filter: grayscale(75%); -webkit-filter: grayscale(75%); -moz-filter: grayscale(75%); -ms-filter: grayscale(75%); -o-filter: grayscale(75%);filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=0.75);}</style>";
+    }
+    </script>
 </body>
 </html>
