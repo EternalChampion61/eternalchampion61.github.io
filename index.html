@@ -139,46 +139,22 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="vim安装和使用vim-startify插件"><a href="#vim安装和使用vim-startify插件" class="headerlink" title="vim安装和使用vim-startify插件"></a>vim安装和使用vim-startify插件</h1><p><img src="https://s1.ax1x.com/2020/08/07/ahGAk8.png" alt="已经配置完成的效果"></p>
-<p>在使用vim-startify配置vim开启界面之前，你需要和我一起配置好vim-plug等有关插件。在执行完这些操作之后，你将会得到一个令你耳目一新的vim。</p>
-<p>所需要执行的操作被分为以下几个点</p>
-<ul>
-<li>安装vim-plug</li>
-<li>安装vim-startify并修改其配置</li>
-</ul>
-<h2 id="安装vim-plug"><a href="#安装vim-plug" class="headerlink" title="安装vim-plug"></a>安装vim-plug</h2><p>您大可以在<a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug官网</a>中去寻找这些安装的方法，并在第一时间获取到其最新版本以及使用教程。</p>
-<p>如果您正在和我一样使用vim，那您完全可以随着以下的步骤来进行vim-plug安装。</p>
-<p><strong>Unix</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/autoload/plug.vim --create-dirs \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure>
+        
 
-<p><strong>Windows (PowerShell)</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md</span> ~\vimfiles\autoload</span><br><span class="line"><span class="variable">$uri</span> = <span class="string">&#x27;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#x27;</span></span><br><span class="line">(<span class="built_in">New-Object</span> Net.WebClient).DownloadFile(</span><br><span class="line"></span><br><span class="line">  <span class="variable">$uri</span>,</span><br><span class="line">  <span class="variable">$ExecutionContext</span>.SessionState.Path.GetUnresolvedProviderPathFromPSPath(</span><br><span class="line">    <span class="string">&quot;~\vimfiles\autoload\plug.vim&quot;</span></span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+          
+            <div class="entry-thumbnail">
+              <a href="/2020/08/07/vim%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8vim-startify%E6%8F%92%E4%BB%B6/"><img src="http://lorempixel.com/750/450/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+          
+          <div class="entry-summary">
+          vim安装和使用vim-startify插件
+在使用vim-startify配置vim开启界面之前，你需要和我一起配置好vim-plug等有关插件。在执行完这些操作之后，你将会得到一个令你耳目一新的vim。
 
-<p>如果您正在使用的是他的衍生版neovim，那您可以使用下面的方法来安装vim-plug。</p>
-<p><strong>Unix, Linux</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh -c &#x27;curl -fLo &quot;$&#123;XDG_DATA_HOME:-$HOME/.local/share&#125;&quot;/nvim/site/autoload/plug.vim --create-dirs \</span><br><span class="line">       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#x27;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Linux (Flatpak)</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure>
-
-<p><strong>Windows (PowerShell)</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md</span> ~\AppData\Local\nvim<span class="literal">-data</span>\site\autoload</span><br><span class="line"><span class="variable">$uri</span> = <span class="string">&#x27;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#x27;</span></span><br><span class="line">(<span class="built_in">New-Object</span> Net.WebClient).DownloadFile(</span><br><span class="line">  <span class="variable">$uri</span>,</span><br><span class="line">  <span class="variable">$ExecutionContext</span>.SessionState.Path.GetUnresolvedProviderPathFromPSPath(</span><br><span class="line">    <span class="string">&quot;~\AppData\Local\nvim-data\site\autoload\plug.vim&quot;</span></span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装vim-startify"><a href="#安装vim-startify" class="headerlink" title="安装vim-startify"></a>安装vim-startify</h2><p>安装vim-startify非常简单，你只需要保持网络的联通，并跟随以下操作进行即可。</p>
-<p>在一切开始之前，您需要保证您的HOME目录下存在**.vimrc**这个文件。并在其中的某一块地方加入以下代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#39;~&#x2F;.vim&#x2F;plugged&#39;)</span><br><span class="line">    Plug &#39;mhinz&#x2F;vim-startify&#39;</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure>
-
-<p>退出vim后并执行<code>source .vimrc</code>来使文件中的配置生效，再次进入vim并使用<code>:PlugInstall</code>命令开始安装。</p>
-<p>在操作执行完成之后重启您的vim，即可看到vim-startify插件产生的内容。如果你对默认的配色不满意，我推荐您在Github寻找有关vim-snazzy的相关信息。</p>
-<p>如果你对默认的样式感到不满，你可以在**.vimrc**文件中修改有关配置，如果你需要类似于此的操作，请查看下一步。</p>
-<h2 id="配置vim-startify"><a href="#配置vim-startify" class="headerlink" title="配置vim-startify"></a>配置vim-startify</h2><p>要配置vim-startify，你必须对脚本语言有相对充足的了解。如果配置出现了任何问题，请您尝试将出现问题的代码块修改或删除。</p>
-<p>要在博客中明确的讲解这些内容是一键非常不容易的事情，如果你有有关的需要，不妨给我发Email（在博客首页有联系方式），我将会免费为您定制。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot; 修改其中的内容去获得更好的体验。 </span><br><span class="line">let g:startify_custom_header &#x3D; [</span><br><span class="line">   \&#39; Hello World &#39;，</span><br><span class="line">   \]</span><br></pre></td></tr></table></figure>
-
-<p>如果你有一定的基础，您可以参考我的配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot; Startify配置</span><br><span class="line">let g:startify_files_number &#x3D; 5</span><br><span class="line">let g:startify_session_autoload &#x3D; 1</span><br><span class="line">let g:startify_custom_header &#x3D; [</span><br><span class="line">   \&#39; ╭─────────────────────────────────────────────────────────────────────────────╮&#39;, </span><br><span class="line">   \&#39; │                                                                             │ &#39;,</span><br><span class="line">   \&#39; │    ████████         ██                ██                         ██         │ &#39;,</span><br><span class="line">   \&#39; │   ██░░░░░░         ░██               ░██                        ░██         │ &#39;,</span><br><span class="line">   \&#39; │  ░██         █████ ░██       ██████  ░██  ██████   ██████       ░██ ██████  │ &#39;,</span><br><span class="line">   \&#39; │  ░█████████ ██░░░██░██████  ██░░░░██ ░██ ░░░░░░██ ░░██░░█       ░██░░██░░█  │ &#39;,</span><br><span class="line">   \&#39; │  ░░░░░░░░██░██  ░░ ░██░░░██░██   ░██ ░██  ███████  ░██ ░        ░██ ░██ ░   │ &#39;,</span><br><span class="line">   \&#39; │         ░██░██   ██░██  ░██░██   ░██ ░██ ██░░░░██  ░██      ██  ░██ ░██     │ &#39;,</span><br><span class="line">   \&#39; │   ████████ ░░█████ ░██  ░██░░██████  ███░░████████░███     ░░█████ ░███     │ &#39;,</span><br><span class="line">   \&#39; │  ░░░░░░░░   ░░░░░  ░░   ░░  ░░░░░░  ░░░  ░░░░░░░░ ░░░       ░░░░░  ░░░      │ &#39;,</span><br><span class="line">   \&#39; │                                                  Our dream will come true.  │ &#39;,</span><br><span class="line">   \&#39; ╰─────────────────────────────────────────────────────────────────────────────╯ &#39;, </span><br><span class="line">   \]</span><br></pre></td></tr></table></figure>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2020/08/07/vim%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8vim-startify%E6%8F%92%E4%BB%B6/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
