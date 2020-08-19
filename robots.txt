@@ -1,15 +1,15 @@
 User-agent: *
 Allow: /
+Allow: /about/
 Allow: /archives/
-Disallow: /tags/
-Disallow: /css/
-Disallow: /font/
-Disallow: /intro/
-Disallow: /scripts/
-Disallow: /lib/
-Disallow: /avatar/
-Disallow: /assets/
-Disallow: /404.html
+Allow: /categories/
+Allow: /friends/
+
+DisAllow: /css/
+DisAllow: /fancybox/
+DisAllow: /js/
+DisAllow: /404.html
+DisAllow: CNAME
 
 Sitemap: https://hugesea.online/sitemap.xml
 Sitemap: https://hugesea.online/baidusitemap.xml
