@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vim安装和使用vim-startify插件。 | Scholar Jr&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="vim" />
+  
+  
+  
+  
+  <meta name="description" content="vim安装和使用vim-startify插件 在使用vim-startify配置vim开启界面之前，你需要和我一起配置好vim-plug等有关插件。在执行完这些操作之后，你将会得到一个令你耳目一新的vim。 所需要执行的操作被分为以下几个点  安装vim-plug 安装vim-startify并修改其配置  安装vim-plug您大可以在vim-plug官网中去寻找这些安装的方法，并在第一时间获取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim安装和使用vim-startify插件。">
+<meta property="og:url" content="https://hugesea.online/2020/08/07/vim%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8vim-startify%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Scholar Jr&#39;s Blog">
+<meta property="og:description" content="vim安装和使用vim-startify插件 在使用vim-startify配置vim开启界面之前，你需要和我一起配置好vim-plug等有关插件。在执行完这些操作之后，你将会得到一个令你耳目一新的vim。 所需要执行的操作被分为以下几个点  安装vim-plug 安装vim-startify并修改其配置  安装vim-plug您大可以在vim-plug官网中去寻找这些安装的方法，并在第一时间获取">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/07/ahGAk8.png">
+<meta property="article:published_time" content="2020-08-07T11:13:27.000Z">
+<meta property="article:modified_time" content="2020-08-19T04:36:52.505Z">
+<meta property="article:author" content="Scholar Jr">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/08/07/ahGAk8.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Scholar Jr&#39;s Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Scholar Jr&#39;s Blog" rel="home"> Scholar Jr&#39;s Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">一起走进代码的世界吧！</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/friends">friends</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-vim安装和使用vim-startify插件" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      vim安装和使用vim-startify插件。
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/08/07/vim%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8vim-startify%E6%8F%92%E4%BB%B6/" class="article-date">
+	  <time datetime="2020-08-07T11:13:27.000Z" itemprop="datePublished">August 7, 2020</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+ 
+      <!--
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+-->
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vim安装和使用vim-startify插件"><a href="#vim安装和使用vim-startify插件" class="headerlink" title="vim安装和使用vim-startify插件"></a>vim安装和使用vim-startify插件</h1><p><img src="https://s1.ax1x.com/2020/08/07/ahGAk8.png" alt="已经配置完成的效果"></p>
+<p>在使用vim-startify配置vim开启界面之前，你需要和我一起配置好vim-plug等有关插件。在执行完这些操作之后，你将会得到一个令你耳目一新的vim。</p>
+<p>所需要执行的操作被分为以下几个点</p>
+<ul>
+<li>安装vim-plug</li>
+<li>安装vim-startify并修改其配置</li>
+</ul>
+<h2 id="安装vim-plug"><a href="#安装vim-plug" class="headerlink" title="安装vim-plug"></a>安装vim-plug</h2><p>您大可以在<a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug官网</a>中去寻找这些安装的方法，并在第一时间获取到其最新版本以及使用教程。</p>
+<p>如果您正在和我一样使用vim，那您完全可以随着以下的步骤来进行vim-plug安装。</p>
+<p><strong>Unix</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/autoload/plug.vim --create-dirs \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure>
+
+<p><strong>Windows (PowerShell)</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md</span> ~\vimfiles\autoload</span><br><span class="line"><span class="variable">$uri</span> = <span class="string">&#x27;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#x27;</span></span><br><span class="line">(<span class="built_in">New-Object</span> Net.WebClient).DownloadFile(</span><br><span class="line"></span><br><span class="line">  <span class="variable">$uri</span>,</span><br><span class="line">  <span class="variable">$ExecutionContext</span>.SessionState.Path.GetUnresolvedProviderPathFromPSPath(</span><br><span class="line">    <span class="string">&quot;~\vimfiles\autoload\plug.vim&quot;</span></span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果您正在使用的是他的衍生版neovim，那您可以使用下面的方法来安装vim-plug。</p>
+<p><strong>Unix, Linux</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh -c &#x27;curl -fLo &quot;$&#123;XDG_DATA_HOME:-$HOME/.local/share&#125;&quot;/nvim/site/autoload/plug.vim --create-dirs \</span><br><span class="line">       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Linux (Flatpak)</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure>
+
+<p><strong>Windows (PowerShell)</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md</span> ~\AppData\Local\nvim<span class="literal">-data</span>\site\autoload</span><br><span class="line"><span class="variable">$uri</span> = <span class="string">&#x27;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#x27;</span></span><br><span class="line">(<span class="built_in">New-Object</span> Net.WebClient).DownloadFile(</span><br><span class="line">  <span class="variable">$uri</span>,</span><br><span class="line">  <span class="variable">$ExecutionContext</span>.SessionState.Path.GetUnresolvedProviderPathFromPSPath(</span><br><span class="line">    <span class="string">&quot;~\AppData\Local\nvim-data\site\autoload\plug.vim&quot;</span></span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装vim-startify"><a href="#安装vim-startify" class="headerlink" title="安装vim-startify"></a>安装vim-startify</h2><p>安装vim-startify非常简单，你只需要保持网络的联通，并跟随以下操作进行即可。</p>
+<p>在一切开始之前，您需要保证您的HOME目录下存在**.vimrc**这个文件。并在其中的某一块地方加入以下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#39;~&#x2F;.vim&#x2F;plugged&#39;)</span><br><span class="line">    Plug &#39;mhinz&#x2F;vim-startify&#39;</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure>
+
+<p>退出vim后并执行<code>source .vimrc</code>来使文件中的配置生效，再次进入vim并使用<code>:PlugInstall</code>命令开始安装。</p>
+<p>在操作执行完成之后重启您的vim，即可看到vim-startify插件产生的内容。如果你对默认的配色不满意，我推荐您在Github寻找有关vim-snazzy的相关信息。</p>
+<p>如果你对默认的样式感到不满，你可以在**.vimrc**文件中修改有关配置，如果你需要类似于此的操作，请查看下一步。</p>
+<h2 id="配置vim-startify"><a href="#配置vim-startify" class="headerlink" title="配置vim-startify"></a>配置vim-startify</h2><p>要配置vim-startify，你必须对脚本语言有相对充足的了解。如果配置出现了任何问题，请您尝试将出现问题的代码块修改或删除。</p>
+<p>要在博客中明确的讲解这些内容是一键非常不容易的事情，如果你有有关的需要，不妨给我发Email（在博客首页有联系方式），我将会免费为您定制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot; 修改其中的内容去获得更好的体验。 </span><br><span class="line">let g:startify_custom_header &#x3D; [</span><br><span class="line">   \&#39; Hello World &#39;，</span><br><span class="line">   \]</span><br></pre></td></tr></table></figure>
+
+<p>如果你有一定的基础，您可以参考我的配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot; Startify配置</span><br><span class="line">let g:startify_files_number &#x3D; 5</span><br><span class="line">let g:startify_session_autoload &#x3D; 1</span><br><span class="line">let g:startify_custom_header &#x3D; [</span><br><span class="line">   \&#39; ╭─────────────────────────────────────────────────────────────────────────────╮&#39;, </span><br><span class="line">   \&#39; │                                                                             │ &#39;,</span><br><span class="line">   \&#39; │    ████████         ██                ██                         ██         │ &#39;,</span><br><span class="line">   \&#39; │   ██░░░░░░         ░██               ░██                        ░██         │ &#39;,</span><br><span class="line">   \&#39; │  ░██         █████ ░██       ██████  ░██  ██████   ██████       ░██ ██████  │ &#39;,</span><br><span class="line">   \&#39; │  ░█████████ ██░░░██░██████  ██░░░░██ ░██ ░░░░░░██ ░░██░░█       ░██░░██░░█  │ &#39;,</span><br><span class="line">   \&#39; │  ░░░░░░░░██░██  ░░ ░██░░░██░██   ░██ ░██  ███████  ░██ ░        ░██ ░██ ░   │ &#39;,</span><br><span class="line">   \&#39; │         ░██░██   ██░██  ░██░██   ░██ ░██ ██░░░░██  ░██      ██  ░██ ░██     │ &#39;,</span><br><span class="line">   \&#39; │   ████████ ░░█████ ░██  ░██░░██████  ███░░████████░███     ░░█████ ░███     │ &#39;,</span><br><span class="line">   \&#39; │  ░░░░░░░░   ░░░░░  ░░   ░░  ░░░░░░  ░░░  ░░░░░░░░ ░░░       ░░░░░  ░░░      │ &#39;,</span><br><span class="line">   \&#39; │                                                  Our dream will come true.  │ &#39;,</span><br><span class="line">   \&#39; ╰─────────────────────────────────────────────────────────────────────────────╯ &#39;, </span><br><span class="line">   \]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/" rel="tag">vim</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/01/Lazygit%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lazygit的安装与使用。</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8vim-startify%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">vim安装和使用vim-startify插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vim-plug"><span class="nav-number">1.1.</span> <span class="nav-text">安装vim-plug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vim-startify"><span class="nav-number">1.2.</span> <span class="nav-text">安装vim-startify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEvim-startify"><span class="nav-number">1.3.</span> <span class="nav-text">配置vim-startify</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Scholar Jr&#39;s Blog All Rights Reserved.
+        <!--
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          -->
+      </div>
+      <!--<div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>-->
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+	<!---<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</scrpt>-->
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

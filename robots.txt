@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Disallow: /tags/
+Disallow: /css/
+Disallow: /font/
+Disallow: /intro/
+Disallow: /scripts/
+Disallow: /lib/
+Disallow: /avatar/
+Disallow: /assets/
+Disallow: /404.html
+
+Sitemap: https://hugesea.online/sitemap.xml
+Sitemap: https://hugesea.online/baidusitemap.xml
