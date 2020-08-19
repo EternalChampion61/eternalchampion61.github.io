@@ -81,6 +81,13 @@
   </url>
   
   <url>
+    <loc>https://hugesea.online/tags/vim/</loc>
+    <lastmod>2020-08-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hugesea.online/tags/GNU-Linux/</loc>
     <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
@@ -89,13 +96,6 @@
   
   <url>
     <loc>https://hugesea.online/tags/Ubuntu/</loc>
-    <lastmod>2020-08-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hugesea.online/tags/vim/</loc>
     <lastmod>2020-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
