@@ -26,7 +26,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s1.ax1x.com/2020/08/19/d16PGq.png">
 <meta property="article:published_time" content="2020-08-19T03:53:45.000Z">
-<meta property="article:modified_time" content="2020-08-19T12:17:51.416Z">
+<meta property="article:modified_time" content="2020-08-20T01:28:49.493Z">
 <meta property="article:author" content="Scholar Jr">
 <meta property="article:tag" content="游戏服务器">
 <meta name="twitter:card" content="summary">
@@ -127,7 +127,7 @@
 <div class="article-gallery">
   <div class="article-gallery-photos">
     
-      <a class="article-gallery-img fancybox" target="_blank" href="https://s1.ax1x.com/2020/08/19/d16PGq.png" rel="gallery_cke1duhy400094ii8el8x7xe5 noopener">
+      <a class="article-gallery-img fancybox" target="_blank" href="https://s1.ax1x.com/2020/08/19/d16PGq.png" rel="gallery_cke24mnhs0009fbi88cfmcfj4 noopener">
         <img src="https://s1.ax1x.com/2020/08/19/d16PGq.png" itemprop="image">
       </a>
     
@@ -179,18 +179,18 @@
 
 <h2 id="新建专用用户"><a href="#新建专用用户" class="headerlink" title="新建专用用户"></a>新建专用用户</h2><p>为了确保服务器的安全和方便服务器的使用，我们需要建立一个新的用户来运行LinuxGSM。</p>
 <ol>
-<li>添加用户 <em>useradd <username></em></li>
+<li>添加用户</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd csgoserver</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
-<li>修改密码 <em>passwd <username></em></li>
+<li>修改密码</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd csgoserver</span><br></pre></td></tr></table></figure>
 
 <p>当提示用户身份令牌已经成功更新之后，我们就可以展开安装的操作。</p>
 <h2 id="安装服务端"><a href="#安装服务端" class="headerlink" title="安装服务端"></a>安装服务端</h2><ol>
-<li>切换到之前创建完成的专用用户 <em>su - <username></em></li>
+<li>切换到之前创建完成的专用用户</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - csgoserver</span><br></pre></td></tr></table></figure>
 
@@ -261,7 +261,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Game Server Login Token (GSLT): Required</span><br><span class="line"># GSLT is required for running a public server.</span><br><span class="line"># More info: https:&#x2F;&#x2F;docs.linuxgsm.com&#x2F;steamcmd&#x2F;gslt</span><br><span class="line">gslt&#x3D;&quot;BB******************************&quot;</span><br></pre></td></tr></table></figure>
 
 <p>在保存之后切换到主目录并使用<code>./csgoserver start</code>命令开启CS:GO服务端，并且关闭防火墙或开启27015端口。如果您使用的是阿里云的服务器，您还要去配置安全组。请参考阿里云官方文档并开启27015端口。</p>
-<h2 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h2><p>在结束了繁杂的安装过程之后就可以打开CS:GO进入服务器玩耍了，您只需要在游戏中按**~**键进入控制台，输入<code>connect &lt;ip&gt;</code>进入服务器。如果CS:GO不能自动检测到游戏服务器的端口，那么请在命令中指定端口<code>connect &lt;ip&gt;:&lt;port&gt;</code>。</p>
+<h2 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h2><p>在结束了繁杂的安装过程之后就可以打开CS:GO进入服务器玩耍了，您只需要在游戏中按<code>~</code>键进入控制台，输入<code>connect &lt;ip&gt;</code>进入服务器。如果CS:GO不能自动检测到游戏服务器的端口，那么请在命令中指定端口<code>connect &lt;ip&gt;:&lt;port&gt;</code>。</p>
 
       
     </div>
